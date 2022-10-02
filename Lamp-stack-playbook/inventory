@@ -1,0 +1,5 @@
+[db_servers]
+lamp-db ansible_host=192.168.56.50 ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_user=vagrant mysqlservice=mysqld mysql_port=3306 dbname=ecomdb dbuser=ecomuser dbpassword=ecompassword
+
+[web_servers]
+lampweb ansible_host=192.168.56.100 ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_user=vagrant httpd_port=80 repository=https://github.com/kodekloudhub/learning-app-ecommerce.git

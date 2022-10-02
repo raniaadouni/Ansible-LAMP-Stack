@@ -1,0 +1,21 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.ssh.insert_key =  false
+    config.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--memory", "256"]
+    end
+
+    # application server lampweb
+    config.vm.define "lampweb" do |app|
+        app.vm.hostname = "lampweb"
+        app.vm.box =  "geerlingguy/centos7"
+        app.vm.network :private_network, ip: "192.168.56.100"
+    end
+        # database server
+    config.vm.define "lamp-db" do |db|
+        db.vm.hostname = "lamp-db"
+        db.vm.box =  "geerlingguy/centos7"
+        db.vm.network :private_network, ip: "192.168.56.50"
+    end
+end
